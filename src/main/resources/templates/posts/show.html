@@ -38,6 +38,15 @@
                 <p>Posted by <a th:href="@{ /users/{id} (id=${post.user.id}) }" th:text="${post.user.email}">some user</a> on <span th:text="${#dates.format(post.createDate,'MMM dd YYYY')}"></span>
                 </p>
             </b>
+            <th:block sec:authorize="isAuthenticated()">
+                <form th:action="@{/addComment}" method="post">
+                    <input type="hidden" name="postId" th:value="${post.id}" />
+                    <div class="input-field">
+                        <input type="text" id="newComment" name="newComment" th:placeholder="'Add a comment...'">
+                        <button type="submit" class="waves-effect waves-light btn">Add Comment</button>
+                    </div>
+                </form>
+            </th:block>
             <div id="comments">
                 <h4>Comments</h4>
                 <ul class="collection">
