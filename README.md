@@ -1,3 +1,4 @@
+Dmitry Bovkun
 # Java Spring Boot Blog
 A simple blog application example project made with Spring Boot for Codeup students.
 
