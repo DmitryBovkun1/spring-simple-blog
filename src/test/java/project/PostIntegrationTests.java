@@ -1,4 +1,4 @@
-package com.fer_mendoza.project;
+package project;
 
 import com.project.BlogApp;
 import com.project.models.User;
@@ -51,21 +51,27 @@ public class PostIntegrationTests {
 
     @Test
     public void testCreateAPost() throws Exception {
+        User testUser = new User();
+        testUser.setUsername("fer");
+        testUser.setEmail("fer@example.com");
+        testUser.setPassword("password");
+        usersRepository.save(testUser);
 
-        User testUser = usersRepository.findByUsername("fer");
-        assertThat(testUser != null);
+        assertThat(testUser.getId()).isNotNull();
 
         this.mvc.perform(post("/posts/create")
-                .sessionAttr(TOKEN_ATTR_NAME, csrfToken)
-                .param(csrfToken.getParameterName(), csrfToken.getToken())
-                .param("title", "test post")
-                .param("body", "lorem")
-                .param("tags", "1")
-                .param("user", String.valueOf(testUser.getId()))
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED))
+                        .sessionAttr(TOKEN_ATTR_NAME, csrfToken)
+                        .param(csrfToken.getParameterName(), csrfToken.getToken())
+                        .param("title", "test post")
+                        .param("body", "lorem")
+                        .param("tags", "1")
+                        .param("user", String.valueOf(testUser.getId()))
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrlPattern("**/"));
 
+        usersRepository.delete(testUser);
     }
+
 
 }

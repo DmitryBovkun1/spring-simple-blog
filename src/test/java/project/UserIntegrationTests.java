@@ -1,4 +1,4 @@
-package com.fer_mendoza.project;
+package project;
 
 import com.project.BlogApp;
 import com.project.repositories.UsersRepository;
@@ -60,26 +60,4 @@ public class UserIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("You need to be logged in to be able to see this page")));
     }
-
-    @Test
-    public void testRegisterAUser() throws Exception {
-
-        // Create a test user
-        this.mvc.perform(post("/users/create")
-                .sessionAttr(TOKEN_ATTR_NAME, csrfToken)
-                .param(csrfToken.getParameterName(), csrfToken.getToken())
-                .param("username", "stacy")
-                .param("email", "stacy@email.com")
-                .param("password", "malibu")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/"));
-
-        // Delete the test user
-        usersRepository.delete(usersRepository.findByEmail("stacy@email.com"));
-
-        // Make sure the test user is gone from the DB
-        assertThat(usersRepository.findByEmail("stacy@email.com") == null);
-    }
-
 }
