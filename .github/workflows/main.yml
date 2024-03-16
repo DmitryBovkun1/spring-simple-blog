@@ -40,7 +40,9 @@ jobs:
       run: mvn spotbugs:check
 
     - name: Upload Checkstyle and SpotBugs reports
+      if: always()
       uses: actions/upload-artifact@v2
       with:
         name: code-analysis-results
         path: target/checkstyle, target/spotbugs
+        
