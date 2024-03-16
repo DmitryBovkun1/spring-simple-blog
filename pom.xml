@@ -164,6 +164,7 @@
 				<version>3.1.2</version>
 				<configuration>
 					<configLocation>checkstyle.xml</configLocation>
+					<outputDirectory>${project.build.directory}/checkstyle</outputDirectory>
 				</configuration>
 				<executions>
 					<execution>
@@ -178,6 +179,9 @@
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
 				<version>4.2.3</version>
+				<configuration>
+					<outputDirectory>${project.build.directory}/spotbugs</outputDirectory>
+				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>com.google.code.findbugs</groupId>
