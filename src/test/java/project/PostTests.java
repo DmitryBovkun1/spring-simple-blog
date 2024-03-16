@@ -1,25 +1,15 @@
 package project;
-import com.project.BlogApp;
 import com.project.models.Comment;
 import com.project.models.Post;
 import com.project.models.Tag;
 import com.project.models.User;
-import com.project.repositories.CommentRepository;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@SpringBootTest(classes = BlogApp.class)
 public class PostTests {
 
     @Test

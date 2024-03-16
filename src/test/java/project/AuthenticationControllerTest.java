@@ -4,7 +4,6 @@ import static org.mockito.Mockito.*;
 
 import java.util.HashMap;
 
-import com.project.BlogApp;
 import com.project.controllers.AuthenticationController;
 import com.project.models.User;
 import com.project.repositories.UsersRepository;
@@ -14,11 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@SpringBootTest(classes = BlogApp.class)
 public class AuthenticationControllerTest {
 
     @Mock

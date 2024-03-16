@@ -1,17 +1,14 @@
 package project;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.project.BlogApp;
 import com.project.models.FriendList;
 import com.project.models.Post;
 import com.project.models.User;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootTest(classes = BlogApp.class)
 public class UserTests {
 
     @Test
