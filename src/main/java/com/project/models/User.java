@@ -69,7 +69,7 @@ public class User {
     }
 
     public String getUsername() {
-        return username+"1";
+        return username;
     }
 
     public void setUsername(String username) {
