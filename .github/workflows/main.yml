@@ -24,7 +24,7 @@ jobs:
 
     - name: Run tests
       run: |
-        mvn test -Dtest=!UserIntegrationTests,!PostIntegrationTests
+        mvn test -Dtest=AuthenticationControllerTest,PostTests,UserTests
 
     - name: Upload test results
       if: always()
