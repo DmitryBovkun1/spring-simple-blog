@@ -20,10 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class PostsController {
@@ -95,7 +92,7 @@ public class PostsController {
     }
 
     private void uploadFileHandler(@Valid Post postSubmitted, Model m, @RequestParam(name = "file") MultipartFile uploadedFile) {
-        if(!uploadedFile.getOriginalFilename().isEmpty()){
+        if(!Objects.requireNonNull(uploadedFile.getOriginalFilename()).isEmpty()){
 
             String filename = uploadedFile.getOriginalFilename().replace(" ", "_").toLowerCase();
             String filepath = Paths.get(uploadPath, filename).toString();

@@ -54,7 +54,7 @@ public class Comment {
         this.user = user;
         this.parent = parent;
         this.post = post;
-        this.createdAt = createdAt;
+        this.createdAt = new Date(createdAt.getTime());
         setChildren();
     }
 
@@ -99,11 +99,11 @@ public class Comment {
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+        return new Date(this.createdAt.getTime());
     }
 
     public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = new Date(createdAt.getTime());
     }
 
     public List<Comment> getChildren() {

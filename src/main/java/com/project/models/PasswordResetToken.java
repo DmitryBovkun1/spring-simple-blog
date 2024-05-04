@@ -45,11 +45,11 @@ public class PasswordResetToken {
     }
 
     public Date getExpiryDate() {
-        return expiryDate;
+        return new Date(this.expiryDate.getTime());
     }
 
     public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
+        this.expiryDate = new Date(expiryDate.getTime());
     }
 
     public boolean isExpired() {

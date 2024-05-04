@@ -106,19 +106,19 @@ public class Post {
     }
 
     public Date getCreateDate() {
-        return createDate;
+        return new Date(this.createDate.getTime());
     }
 
     public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+        this.createDate = new Date(createDate.getTime());;
     }
 
     public Date getModifyDate() {
-        return modifyDate;
+        return new Date(this.modifyDate.getTime());
     }
 
     public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
+        this.modifyDate = new Date(modifyDate.getTime());
     }
 
     public User getUser() {

@@ -30,9 +30,9 @@ public class Event {
 
     public Event(String title, Date startDate, Date endDate, Date testDate) {
         this.title = title;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.testDate = testDate;
+        this.startDate = new Date(startDate.getTime());
+        this.endDate = new Date(endDate.getTime());
+        this.testDate = new Date(testDate.getTime());
     }
 
     public Event() {
@@ -56,26 +56,26 @@ public class Event {
     }
 
     public Date getStartDate() {
-        return startDate;
+        return new Date(this.startDate.getTime());
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+        this.startDate = new Date(startDate.getTime());;
     }
 
     public Date getEndDate() {
-        return endDate;
+        return new Date(this.endDate.getTime());
     }
 
     public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+        this.endDate = new Date(endDate.getTime());
     }
 
     public Date getTestDate() {
-        return testDate;
+        return new Date(this.testDate.getTime());
     }
 
     public void setTestDate(Date testDate) {
-        this.testDate = testDate;
+        this.testDate = new Date(testDate.getTime());;
     }
 }
