@@ -92,9 +92,12 @@ public class PostsController {
     }
 
     private void uploadFileHandler(@Valid Post postSubmitted, Model m, @RequestParam(name = "file") MultipartFile uploadedFile) {
-        if (uploadedFile != null && uploadedFile.getOriginalFilename() != null && !uploadedFile.getOriginalFilename().isEmpty()){
+        Optional<String> filenameOptional = Optional.ofNullable(uploadedFile)
+                .map(MultipartFile::getOriginalFilename)
+                .map(name -> name.replace(" ", "_").toLowerCase());
 
-            String filename = uploadedFile.getOriginalFilename().replace(" ", "_").toLowerCase();
+        if (filenameOptional.isPresent() && !filenameOptional.get().isEmpty()) {
+            String filename = filenameOptional.get();
             String filepath = Paths.get(uploadPath, filename).toString();
             File destinationFile = new File(filepath);
 
