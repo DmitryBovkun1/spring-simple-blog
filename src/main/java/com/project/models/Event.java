@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Optional;
 
 @Entity
 @Table(name = "events")
@@ -56,7 +57,10 @@ public class Event {
     }
 
     public Date getStartDate() {
-        return new Date(this.startDate.getTime());
+        return Optional.ofNullable(this.startDate)
+                .map(Date::getTime)
+                .map(Date::new)
+                .orElse(null);
     }
 
     public void setStartDate(Date startDate) {
@@ -64,7 +68,10 @@ public class Event {
     }
 
     public Date getEndDate() {
-        return new Date(this.endDate.getTime());
+        return Optional.ofNullable(this.endDate)
+                .map(Date::getTime)
+                .map(Date::new)
+                .orElse(null);
     }
 
     public void setEndDate(Date endDate) {
@@ -72,7 +79,10 @@ public class Event {
     }
 
     public Date getTestDate() {
-        return new Date(this.testDate.getTime());
+        return Optional.ofNullable(this.testDate)
+                .map(Date::getTime)
+                .map(Date::new)
+                .orElse(null);
     }
 
     public void setTestDate(Date testDate) {

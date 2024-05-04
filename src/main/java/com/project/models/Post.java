@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name="posts")
@@ -106,7 +107,10 @@ public class Post {
     }
 
     public Date getCreateDate() {
-        return new Date(this.createDate.getTime());
+        return Optional.ofNullable(this.createDate)
+                .map(Date::getTime)
+                .map(Date::new)
+                .orElse(null);
     }
 
     public void setCreateDate(Date createDate) {
@@ -114,7 +118,10 @@ public class Post {
     }
 
     public Date getModifyDate() {
-        return new Date(this.modifyDate.getTime());
+        return Optional.ofNullable(this.modifyDate)
+                .map(Date::getTime)
+                .map(Date::new)
+                .orElse(null);
     }
 
     public void setModifyDate(Date modifyDate) {

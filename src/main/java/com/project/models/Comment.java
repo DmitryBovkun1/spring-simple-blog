@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "comments")
@@ -99,7 +100,10 @@ public class Comment {
     }
 
     public Date getCreatedAt() {
-        return new Date(this.createdAt.getTime());
+        return Optional.ofNullable(this.createdAt)
+                .map(Date::getTime)
+                .map(Date::new)
+                .orElse(null);
     }
 
     public void setCreatedAt(Date createdAt) {
