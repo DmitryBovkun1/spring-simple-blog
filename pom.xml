@@ -217,6 +217,23 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>br.com.softplan.security.zap</groupId>
+				<artifactId>zap-maven-plugin</artifactId>
+				<version>1.2.1-0</version>
+				<configuration>
+					<zapHost>localhost</zapHost>
+					<zapPort>8081</zapPort>
+					<targetUrl>http://localhost:8080/</targetUrl>
+					<zapApiKey>AAAapikey12312</zapApiKey>
+					<authenticationType>form</authenticationType>
+					<username>test</username>
+					<password>2202</password>
+					<loginUrl>http://localhost:8080/login</loginUrl>
+					<loggedInRegex><![CDATA[\QLogout\E]]></loggedInRegex>
+					<loggedOutRegex><![CDATA[\Q<div class="alert">                 You have been logged out.             </div>\E]]></loggedOutRegex>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
